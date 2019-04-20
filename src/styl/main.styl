@@ -12,6 +12,9 @@
 	font-style: normal;
 }
 
+::-webkit-scrollbar {
+    display: none;
+}
 
 html, body
 	margin 0
@@ -78,6 +81,9 @@ html, body, .swiper-container
 	float left
 	.description-block
 		// background-color #e99e6f
+		overflow scroll
+		padding-bottom 80px
+		box-sizing border-box
 		height 85%
 		h1
 			font 18pt/20pt 'HWB'
@@ -88,6 +94,8 @@ html, body, .swiper-container
 			padding 0
 			padding-bottom 10px
 	.labels-block
+		padding-top 20px
+		box-sizing border-box
 		height 15%
 		// background-color #003da6
 		.label-item
