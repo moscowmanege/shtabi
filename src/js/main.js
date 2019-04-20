@@ -52,12 +52,12 @@ $(function() {
 	$(document).on('keydown', function(e) {
 		if (e.which === 38) {
 			if (key_pressed == false) {
-				var $desc = $('.description-block');
+				var $desc = $('.description-block').eq(activeV);
 				$desc.scrollTop($desc.scrollTop() + 200);
 
 				key_pressed = true;
 			} else {
-				$('.description-block').animate({
+				$('.description-block').eq(activeV).animate({
 					'scrollTop': 0
 				}, 300);
 			}
