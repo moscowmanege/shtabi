@@ -24,10 +24,11 @@ $(function() {
 						loop: true,
 						runCallbacksOnInit: false,
 
-						// preloadImages: false,
-						// lazyLoading: true,
-						// lazyLoadingInPrevNext: true,
-						// lazyLoadingInPrevNextAmount: 2,
+						preloadImages: false,
+						lazy: {
+							loadPrevNext: true,
+							loadPrevNextAmount: 2
+						},
 						on: {
 							slideChange: function() {
 								var $lables = $('.swiper-container-v').find('.labels-block').eq(activeV).find('.label-item');
