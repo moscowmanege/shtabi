@@ -16,7 +16,7 @@ $(function() {
 					var swiperH = new Swiper(swH, {
 						slidesPerView: 1,
 						direction: 'horizontal',
-						// spaceBetween: 30,
+						spaceBetween: 30,
 						// autoHeight: true,
 						// initialSlide: 1,
 						// centeredSlides: true,
