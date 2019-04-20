@@ -28,7 +28,12 @@ $(function() {
 						// lazyLoading: true,
 						// lazyLoadingInPrevNext: true,
 						// lazyLoadingInPrevNextAmount: 2,
-
+						on: {
+							slideChange: function() {
+								var $lables = $('.swiper-container-v').find('.labels-block').eq(activeV).find('.label-item');
+								$lables.removeClass('active').eq(this.realIndex).addClass('active');
+							}
+						}
 					});
 
 					swipers.push(swiperH);
