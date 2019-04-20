@@ -2,6 +2,7 @@ $(function() {
 	// var buttons = {40: 'down', 38: 'up', 37: 'left', 39: 'right'};
 	var swipers = [];
 	var activeV = 0;
+	var key_pressed = false;
 
 	var swiperV = new Swiper('.swiper-container-v', {
 		slidesPerView: 1,
@@ -47,7 +48,26 @@ $(function() {
 		}
 	});
 
+
+	$(document).on('keydown', function(e) {
+		if (e.which === 38) {
+			if (key_pressed == false) {
+				var $desc = $('.description-block');
+				$desc.scrollTop($desc.scrollTop() + 200);
+
+				key_pressed = true;
+			} else {
+				$('.description-block').animate({
+					'scrollTop': 0
+				}, 300);
+			}
+		}
+	});
+
 	$(document).on('keyup', function(e) {
+		if (e.which == 38) {
+			key_pressed = false;
+		}
 
 		if (e.which == 40) {
 			swiperV.slideNext();
