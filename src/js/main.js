@@ -1,7 +1,7 @@
 $(function() {
 	// var buttons = {40: 'down', 38: 'up', 37: 'left', 39: 'right'};
 	var swipers = [];
-	var currentV = 0;
+	var activeV = 0;
 
 	var swiperV = new Swiper('.swiper-container-v', {
 		slidesPerView: 1,
@@ -11,33 +11,34 @@ $(function() {
 		// touchRatio: 0,
 		// keyboardControl: true,
 		on: {
+			init: function() {
+				$('.swiper-container-h').toArray().forEach(function(swH) {
+					var swiperH = new Swiper(swH, {
+						slidesPerView: 1,
+						direction: 'horizontal',
+						// spaceBetween: 30,
+						// autoHeight: true,
+						// initialSlide: 1,
+						// centeredSlides: true,
+						// keyboardControl: true,
+						loop: true,
+						runCallbacksOnInit: false,
+
+						// preloadImages: false,
+						// lazyLoading: true,
+						// lazyLoadingInPrevNext: true,
+						// lazyLoadingInPrevNextAmount: 2,
+
+					});
+
+					swipers.push(swiperH);
+				});
+			},
 			slideChange: function() {
-				currentV = this.realIndex;
+				activeV = this.activeIndex;
 				$('.navigate-block').removeClass('active').eq(this.realIndex).addClass('active');
 			}
 		}
-	});
-
-	$('.swiper-container-h').toArray().forEach(function(swiper) {
-		var swiperH = new Swiper(swiper, {
-			slidesPerView: 1,
-			direction: 'horizontal',
-			// spaceBetween: 30,
-			// autoHeight: true,
-			// initialSlide: 1,
-			// centeredSlides: true,
-			// keyboardControl: true,
-			loop: true,
-			runCallbacksOnInit: false,
-
-			// preloadImages: false,
-			// lazyLoading: true,
-			// lazyLoadingInPrevNext: true,
-			// lazyLoadingInPrevNextAmount: 2,
-
-		});
-
-		swipers.push(swiperH);
 	});
 
 	$(document).on('keyup', function(e) {
@@ -47,11 +48,11 @@ $(function() {
 		}
 
 		if (e.which == 37) {
-			swipers[currentV].slidePrev();
+			swipers[activeV].slidePrev();
 		}
 
 		if (e.which == 39) {
-			swipers[currentV].slideNext();
+			swipers[activeV].slideNext();
 		}
 	});
 
