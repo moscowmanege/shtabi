@@ -52,6 +52,8 @@ $(function() {
 
 
 	$(document).on('keydown', function(e) {
+		if (!banner_timeout) return false;
+
 		if (e.which === 38) {
 			if (key_pressed == false) {
 				var $desc = $('.description-block').eq(activeV);
@@ -66,35 +68,40 @@ $(function() {
 		}
 	});
 
+
 	$(document).on('keydown', function(e) {
 		$('.banner-button').filter('.' + buttons[e.which]).addClass('active');
 	});
+
 
 	$(document).on('keyup', function(e) {
 		$('.banner-button').removeClass('active');
 		$('.banner-block').addClass('hidden');
 
+		if (banner_timeout) {
+			if (e.which == 38) {
+				key_pressed = false;
+			}
+
+			if (e.which == 40) {
+				swiperV.slideNext();
+			}
+
+			if (e.which == 37) {
+				swipers[activeV].slidePrev();
+			}
+
+			if (e.which == 39) {
+				swipers[activeV].slideNext();
+			}
+		}
+
 		clearTimeout(banner_timeout);
 		banner_timeout = setTimeout(function() {
 			$('.banner-block').removeClass('hidden');
 			banner_timeout = null;
-		}, 1000 * 40);
-
-		if (e.which == 38) {
-			key_pressed = false;
-		}
-
-		if (e.which == 40) {
-			swiperV.slideNext();
-		}
-
-		if (e.which == 37) {
-			swipers[activeV].slidePrev();
-		}
-
-		if (e.which == 39) {
-			swipers[activeV].slideNext();
-		}
+		}, 1000 * 4);
 	});
+
 
 });
