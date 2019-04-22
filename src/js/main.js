@@ -100,7 +100,7 @@ $(function() {
 		banner_timeout = setTimeout(function() {
 			$('.banner-block').removeClass('hidden');
 			banner_timeout = null;
-		}, 1000 * 4);
+		}, 1000 * 40);
 	});
 
 
