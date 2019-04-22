@@ -11,10 +11,14 @@ html
 		script(type='text/javascript', src='../js/main.js')
 	body
 		.banner-block
-			.banner-button
-			.banner-button
-			.banner-button
-			.banner-button
+			.banner-section.left
+				.banner-button.complex
+			.banner-section.main
+				.banner-section.center
+					.banner-button.slide_left
+					.banner-button.slide_right
+				.banner-section.right
+					.banner-button.scroll
 
 		.navigate-blocks
 			each block, i in blocks
