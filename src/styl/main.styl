@@ -118,19 +118,23 @@ html, body, .swiper-container
 	height 100%
 	// background-color #68ce46
 	float left
-	padding-left 15px
-	box-sizing border-box
+	position relative
 	.description-block
 		// background-color #e99e6f
-		overflow hidden
-		padding-bottom 40px
+		padding-left 15px
 		box-sizing border-box
-		height 80%
+		overflow hidden
+		padding-bottom 180px
+		box-sizing border-box
+		height 100%
+		width 100%
+		position absolute
 		.description-end
 			margin-top 40px
 			font 12pt/14pt 'HWB'
 			text-align center
 		.description-content
+			hyphens auto
 			h1
 				font 16pt/18pt 'HWB'
 				font-weight bold
@@ -141,15 +145,22 @@ html, body, .swiper-container
 				padding 0
 				padding-bottom 10px
 	.labels-block
-		padding-top 20px
+		padding-top 15px
+		padding-left 15px
 		box-sizing border-box
-		height 20%
+		width 100%
+		position absolute
+		bottom 0px
+		background-color black
 		// background-color #003da6
 		.label-item
 			font 12pt/14pt 'HW'
 			display none
-			// &:before
-			// 	content '←'
+			.label
+				margin-bottom 5px
+				&.title:before
+					margin-right 5px
+					content '←'
 			&.active
 				display block
 
