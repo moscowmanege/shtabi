@@ -1,8 +1,9 @@
 $(function() {
-	// var buttons = {40: 'down', 38: 'up', 37: 'left', 39: 'right'};
+	var buttons = {40: 'down', 38: 'up', 37: 'left', 39: 'right'};
 	var swipers = [];
 	var activeV = 0;
 	var key_pressed = false;
+	banner_timeout = null;
 
 	var swiperV = new Swiper('.swiper-container-v', {
 		slidesPerView: 1,
@@ -65,7 +66,20 @@ $(function() {
 		}
 	});
 
+	$(document).on('keydown', function(e) {
+		$('.banner-button').filter('.' + buttons[e.which]).addClass('active');
+	});
+
 	$(document).on('keyup', function(e) {
+		$('.banner-button').removeClass('active');
+		$('.banner-block').addClass('hidden');
+
+		clearTimeout(banner_timeout);
+		banner_timeout = setTimeout(function() {
+			$('.banner-block').removeClass('hidden');
+			banner_timeout = null;
+		}, 1000 * 4);
+
 		if (e.which == 38) {
 			key_pressed = false;
 		}

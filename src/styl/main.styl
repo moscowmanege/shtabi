@@ -31,6 +31,8 @@ html, body
 	background-color rgba(0, 0, 0, 0.80)
 	top 0; left 0; right 0; bottom 0
 	overflow hidden
+	&.hidden
+		display none
 	.banner-button
 		width 80px
 		height 80px
@@ -40,6 +42,9 @@ html, body
 		transform translateY(75vh)
 		margin-right 40px
 		position relative
+		&.active
+			background-color white
+			color black
 		&.slide_left
 			transform translateY(75vh) rotate(-180deg)
 		&.complex
