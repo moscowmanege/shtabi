@@ -44,6 +44,7 @@ $(function() {
 			slideChange: function() {
 				activeV = this.activeIndex;
 				$('.navigate-block').removeClass('active').eq(this.realIndex).addClass('active');
+				$('.description-block').scrollTop(0);
 			}
 		}
 	});
@@ -53,11 +54,11 @@ $(function() {
 		if (e.which === 38) {
 			if (key_pressed == false) {
 				var $desc = $('.description-block').eq(activeV);
-				$desc.scrollTop($desc.scrollTop() + 200);
+				$desc.scrollTop($desc.scrollTop() + 300);
 
 				key_pressed = true;
 			} else {
-				$('.description-block').eq(activeV).animate({
+				$('.description-block').eq(activeV).filter(':not(:animated)').animate({
 					'scrollTop': 0
 				}, 300);
 			}
