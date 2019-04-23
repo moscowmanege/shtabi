@@ -14,8 +14,7 @@
 
 html, body
 	margin 0
-	padding 10px
-	box-sizing border-box
+	padding 0
 	// cursor none
 	// user-select none
 	-webkit-font-smoothing: antialiased;
@@ -28,8 +27,7 @@ html, body
 	position absolute
 	width 100%
 	height 100%
-	background-color rgba(0, 0, 0, 0.80)
-	top 0; left 0; right 0; bottom 0
+	background-color rgba(0, 0, 0, 0.40)
 	overflow hidden
 	opacity 1
 	transition 0.25s opacity linear
@@ -81,9 +79,19 @@ html, body
 			// background-color blue
 
 
-html, body, .swiper-container
+html, body, .content-block, .swiper-container
 	height 100%
 
+.content-block
+	padding 20px
+	box-sizing border-box
+	width 100%
+	position absolute
+	filter: blur(5px)
+	transition 0.25s filter linear
+	&.open
+		transition 0.25s filter linear
+		filter: blur(0px)
 
 .navigate-blocks
 	width 20%
