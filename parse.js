@@ -14,28 +14,27 @@ rimraf.sync('./data/halls/*');
 
 $ = cheerio.load(html, { decodeEntities: false });
 
-var array = $('tr').slice(1).map(function() {
-	var td = $(this).children('td');
+$('table').each(function(hall_index) {
+	hall_index += 1;
 
-	return {
-		hall: +td.eq(6).text().replace(/\t+/g, '').replace(/\n/g, ' ').trim().replace('Павильон № ', ''),
-		path: td.eq(4).text().replace(/\t+/g, '').replace(/\n/g, ' ').trim(),
+	var array = $(this).find('tr').slice(1).map(function() {
+		var td = $(this).children('td');
 
-		title: td.eq(0).text().replace(/\t+/g, '').replace(/\n/g, ' ').trim(),
-		description: td.eq(1).text().replace(/\t+/g, '').replace(/\n/g, ' ').trim(),
-		museum: td.eq(2).text().replace(/\t+/g, '').replace(/\n/g, ' ').trim(),
-		year_place: td.eq(3).text().replace(/\t+/g, '').replace(/\n/g, ' ').trim(),
-		complex: td.eq(5).text().replace(/\t+/g, '').replace(/\n/g, ' ').trim(),
+		return {
+			path: td.eq(4).text().replace(/\t+/g, '').replace(/\n/g, ' ').trim(),
 
-	};
-}).toArray();
+			title: td.eq(0).text().replace(/\t+/g, '').replace(/\n/g, ' ').trim(),
+			description: td.eq(1).text().replace(/\t+/g, '').replace(/\n/g, ' ').trim(),
+			museum: td.eq(2).text().replace(/\t+/g, '').replace(/\n/g, ' ').trim(),
+			year_place: td.eq(3).text().replace(/\t+/g, '').replace(/\n/g, ' ').trim(),
+			complex: td.eq(5).text().replace(/\t+/g, '').replace(/\n/g, ' ').trim(),
 
-var halls = array.map(function(item) {
-	return item.hall;
-});
+		};
+	}).toArray();
 
-uniq(halls).forEach(function(item) {
-	var items = array.filter(function(check_item) { return (check_item.hall == item && check_item.path != ''); });
+	if (array.length == 0) return true;
+
+	var items = array.filter(function(check_item) { return (check_item.path != ''); });
 
 	var complexes = items.map(function(cx_item) {
 		return cx_item.complex;
@@ -51,14 +50,15 @@ uniq(halls).forEach(function(item) {
 	});
 
 	var hall = {
-		hall: item,
+		hall: hall_index,
 		base_path: 'main',
 		blocks: complex_items
 	};
 
-	fs.writeFile('./data/halls/' + item + '.json', JSON.stringify(hall, null, 2), 'utf8', function(err) {
+	fs.writeFile('./data/halls/' + hall_index + '.json', JSON.stringify(hall, null, 2), 'utf8', function(err) {
 		if (err) throw err;
 
-		console.log('json item ' + item + ' saved');
+		console.log('json item ' + hall_index + ' saved');
 	});
+
 });
