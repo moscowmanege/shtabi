@@ -11,7 +11,8 @@ var uniq = function(a) {
 
 rimraf.sync('./data/halls/*');
 
-var parseFile = function($, base_path) {
+var parseFile = function(base_path, html_path) {
+	var $ = cheerio.load(fs.readFileSync(html_path, 'utf8'), { decodeEntities: false });
 
 	var array = $('tr').slice(1).map(function() {
 		var td = $(this).children('td');
@@ -57,49 +58,12 @@ var parseFile = function($, base_path) {
 };
 
 async.parallel([
-
-	function(callback) {
-		var $ = cheerio.load(fs.readFileSync('./data/raw/1.html', 'utf8'), { decodeEntities: false });
-		callback(null, $);
-	},
-	function(callback) {
-		var $ = cheerio.load(fs.readFileSync('./data/raw/2.html', 'utf8'), { decodeEntities: false });
-		callback(null, $);
-	},
-	// function(callback) {
-	// 	var $ = cheerio.load(fs.readFileSync('./data/raw/3.html', 'utf8'), { decodeEntities: false });
-	// 	callback(null, $);
-	// },
-	// function(callback) {
-	// 	var $ = cheerio.load(fs.readFileSync('./data/raw/4.html', 'utf8'), { decodeEntities: false });
-	// 	callback(null, $);
-	// },
-	// function(callback) {
-	// 	var $ = cheerio.load(fs.readFileSync('./data/raw/5.html', 'utf8'), { decodeEntities: false });
-	// 	callback(null, $);
-	// },
-	// function(callback) {
-	// 	var $ = cheerio.load(fs.readFileSync('./data/raw/6.html', 'utf8'), { decodeEntities: false });
-	// 	callback(null, $);
-	// },
-	// function(callback) {
-	// 	var $ = cheerio.load(fs.readFileSync('./data/raw/7.html', 'utf8'), { decodeEntities: false });
-	// 	callback(null, $);
-	// },
-	// function(callback) {
-	// 	var $ = cheerio.load(fs.readFileSync('./data/raw/8.html', 'utf8'), { decodeEntities: false });
-	// 	callback(null, $);
-	// }
-
-], function(err, results) {
-	async.parallel([
-		async.apply(parseFile, results[0], 1),
-		async.apply(parseFile, results[1], 2),
-		// async.apply(parseFile, results[2], 3)
-		// async.apply(parseFile, results[3], 4),
-		// async.apply(parseFile, results[4], 5),
-		// async.apply(parseFile, results[5], 6)
-		// async.apply(parseFile, results[6], 7),
-		// async.apply(parseFile, results[7], 8),
-	]);
-});
+	async.apply(parseFile, 1, './data/raw/1.html'),
+	async.apply(parseFile, 2, './data/raw/2.html'),
+	// async.apply(parseFile, 3, './data/raw/3.html'),
+	// async.apply(parseFile, 4, './data/raw/4.html'),
+	// async.apply(parseFile, 5, './data/raw/5.html'),
+	// async.apply(parseFile, 6, './data/raw/6.html'),
+	// async.apply(parseFile, 7, './data/raw/7.html'),
+	// async.apply(parseFile, 8, './data/raw/8.html')
+]);
