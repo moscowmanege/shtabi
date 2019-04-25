@@ -23,8 +23,8 @@ var array = $('tr').slice(1).map(function() {
 
 		title: td.eq(0).text().replace(/\t+/g, '').replace(/\n/g, ' ').trim(),
 		description: td.eq(1).text().replace(/\t+/g, '').replace(/\n/g, ' ').trim(),
-		year_place: td.eq(2).text().replace(/\t+/g, '').replace(/\n/g, ' ').trim(),
-		museum: td.eq(3).text().replace(/\t+/g, '').replace(/\n/g, ' ').trim(),
+		museum: td.eq(2).text().replace(/\t+/g, '').replace(/\n/g, ' ').trim(),
+		year_place: td.eq(3).text().replace(/\t+/g, '').replace(/\n/g, ' ').trim(),
 		complex: td.eq(5).text().replace(/\t+/g, '').replace(/\n/g, ' ').trim(),
 
 	};
