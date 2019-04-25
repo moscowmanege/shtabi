@@ -43,6 +43,7 @@ uniq(halls).forEach(function(item) {
 
 	var complex_items = uniq(complexes).map(function(complex) {
 		var elems = items.filter(function(c_item) { return c_item.complex == complex; });
+
 		return {
 			title: elems[0].complex,
 			elems: elems
