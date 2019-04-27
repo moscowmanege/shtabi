@@ -86,7 +86,7 @@ $(function() {
 	$(document).on('keyup', function(e) {
 		$('.banner-button').removeClass('active');
 		$('.banner-block').addClass('hidden');
-		$('.content-block').addClass('open');
+		// $('.content-block').addClass('open');
 
 		if (banner_timeout) {
 			if (e.which == 38) {
@@ -109,7 +109,7 @@ $(function() {
 		clearTimeout(banner_timeout);
 		banner_timeout = setTimeout(function() {
 			$('.banner-block').removeClass('hidden');
-			$('.content-block').removeClass('open');
+			// $('.content-block').removeClass('open');
 			banner_timeout = null;
 		}, 1000 * 60);
 	});
