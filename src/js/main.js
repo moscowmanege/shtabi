@@ -57,7 +57,10 @@ $(function() {
 		grainOpacity: 0.05,
 		grainDensity: 1,
 		grainWidth: 3,
-		grainHeight: 3
+		grainHeight: 3,
+
+		grainChaos: 0.5,
+		grainSpeed: 20
 	});
 
 	$(document).on('keydown', function(e) {
