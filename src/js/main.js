@@ -54,7 +54,7 @@ $(function() {
 		animate: true,
 		patternWidth: 100,
 		patternHeight: 100,
-		grainOpacity: 0.05,
+		grainOpacity: 0.025,
 		grainDensity: 1,
 		grainWidth: 3,
 		grainHeight: 3,
