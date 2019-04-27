@@ -50,6 +50,15 @@ $(function() {
 		}
 	});
 
+	grained('#grained', {
+		animate: true,
+		patternWidth: 100,
+		patternHeight: 100,
+		grainOpacity: 0.05,
+		grainDensity: 1,
+		grainWidth: 3,
+		grainHeight: 3
+	});
 
 	$(document).on('keydown', function(e) {
 		if (!banner_timeout) return false;
