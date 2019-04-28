@@ -3,7 +3,13 @@ $(function() {
 	var swipers = [];
 	var activeV = 0;
 	var key_pressed = false;
-	banner_timeout = null;
+	var banner_timeout = null;
+
+
+	var reload_interval = setInterval(function() {
+		location.reload();
+	}, 1000 * 60 * 20);
+
 
 	var swiperV = new Swiper('.swiper-container-v', {
 		slidesPerView: 1,
@@ -50,6 +56,7 @@ $(function() {
 		}
 	});
 
+
 	grained('#grained', {
 		animate: true,
 		patternWidth: 100,
@@ -62,6 +69,7 @@ $(function() {
 		grainChaos: 0.5,
 		grainSpeed: 20
 	});
+
 
 	$(document).on('keydown', function(e) {
 		if (!banner_timeout) return false;
@@ -110,12 +118,18 @@ $(function() {
 		}
 
 		clearTimeout(banner_timeout);
+		clearInterval(reload_interval);
+
+		reload_interval = setInterval(function() {
+			location.reload();
+		}, 1000 * 60 * 20);
+
 		banner_timeout = setTimeout(function() {
 			$('.banner-block').removeClass('hidden');
 			// $('.content-block').removeClass('open');
 			banner_timeout = null;
 		}, 1000 * 60);
-	});
+	}).trigger('keyup');
 
 
 });
