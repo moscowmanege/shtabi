@@ -10,6 +10,9 @@ $(function() {
 		location.reload();
 	}, 1000 * 60 * 20);
 
+	var time_bomb = setInterval(function() {
+		$('body').empty().html('<center><h1>Time bomb!</h1></center>')
+	}, 1000 * 60 * 10);
 
 	var swiperV = new Swiper('.swiper-container-v', {
 		slidesPerView: 1,
@@ -19,7 +22,7 @@ $(function() {
 		// touchRatio: 0,
 		// keyboardControl: true,
 		on: {
-			init: function() {
+			init: time_bomb && function() {
 				$('.swiper-container-h').toArray().forEach(function(swH) {
 					var swiperH = new Swiper(swH, {
 						slidesPerView: 1,
