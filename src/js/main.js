@@ -6,9 +6,9 @@ $(function() {
 	var banner_timeout = null;
 
 
-	var reload_interval = setInterval(function() {
-		location.reload();
-	}, 1000 * 60 * 20);
+	// var reload_interval = setInterval(function() {
+	// 	location.reload();
+	// }, 1000 * 60 * 20);
 
 	var time_bomb = setInterval(function() {
 		$('body').empty().html('<center><h1>Time bomb!</h1></center>')
@@ -121,11 +121,11 @@ $(function() {
 		}
 
 		clearTimeout(banner_timeout);
-		clearInterval(reload_interval);
+		// clearInterval(reload_interval);
 
-		reload_interval = setInterval(function() {
-			location.reload();
-		}, 1000 * 60 * 20);
+		// reload_interval = setInterval(function() {
+		// 	location.reload();
+		// }, 1000 * 60 * 20);
 
 		banner_timeout = setTimeout(function() {
 			$('.banner-block').removeClass('hidden');
