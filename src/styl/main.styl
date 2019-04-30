@@ -64,9 +64,13 @@ html, body, .content-block, .swiper-container
 		display inline-block
 		margin-right 40px
 		position relative
+		background-image url('../../staff/icons/arrow_w.svg')
+		background-size 40%
+		background-position center
+		background-repeat no-repeat
 		&.active
 			background-color white
-			color black
+			background-image url('../../staff/icons/arrow.svg')
 		&.slide_left
 			transform rotate(-180deg)
 		&.complex
@@ -74,13 +78,6 @@ html, body, .content-block, .swiper-container
 			transform rotate(90deg)
 		&:last-child
 			margin-right 0
-		&:after
-			content '➞'
-			padding-top 20px
-			position absolute
-			display block
-			font-size 35px
-			top 0; left 0; right 0; bottom 0
 
 
 .grained-block
