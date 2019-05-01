@@ -67,7 +67,7 @@ $(function() {
 		animate: true,
 		patternWidth: 100,
 		patternHeight: 100,
-		grainOpacity: 0.025,
+		grainOpacity: 0.010,
 		grainDensity: 1,
 		grainWidth: 3,
 		grainHeight: 3,
@@ -83,7 +83,10 @@ $(function() {
 		if (e.which === 38) {
 			if (key_pressed == false) {
 				var $desc = $('.description-block').eq(activeV);
-				$desc.scrollTop($desc.scrollTop() + 300);
+				// $desc.scrollTop($desc.scrollTop() + 300);
+				$desc.filter(':not(:animated)').animate({
+					'scrollTop': $desc.scrollTop() + 160
+				}, 300);
 
 				key_pressed = true;
 			} else {
