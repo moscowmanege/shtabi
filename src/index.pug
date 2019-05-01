@@ -24,9 +24,20 @@ html
 					.banner-button.up.scroll
 
 		.content-block
-			.navigate-blocks
-				each block, i in blocks
-					.navigate-block(class= (i==0) ? 'active' : ''): span= block.title
+			.panel-block
+				.navigate-blocks
+					each block, i in blocks
+						.navigate-block(class= (i==0) ? 'active' : ''): span= block.title
+
+				.labels-block
+					each block in blocks
+						.labels-group
+							each elem, i in block.elems
+								.label-item(class= (i==0) ? 'active' : '')
+									.label.title= elem.title
+									.label.description= elem.description
+									.label.museum= elem.museum
+									.label.year-place= elem.year_place
 
 			.swiper-container.swiper-container-v: .swiper-wrapper
 				each block in blocks
@@ -49,12 +60,4 @@ html
 								.description-content
 									include txt/_txt.pug
 								.description-end Удерживать кнопку для возврата в начало
-
-							.labels-block
-								each elem, i in block.elems
-									.label-item(class= (i==0) ? 'active' : '')
-										.label.title= elem.title
-										.label.description= elem.description
-										.label.museum= elem.museum
-										.label.year-place= elem.year_place
 

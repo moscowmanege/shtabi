@@ -108,22 +108,40 @@ html, body, .content-block, .swiper-container
 
 
 .navigate-blocks
-	width 24%
-	height 100%
-	// background-color #a5a5a5
-	float left
-	padding-right 30px
-	box-sizing border-box
 	.navigate-block
 		text-transform uppercase
 		margin-bottom 10px
 		font 20pt/26pt 'HW'
 		&.active
 			text-decoration underline
-		// span
-		// 	border-bottom 3px solid transparent
-		// &.active span
-		// 	border-bottom 3px solid white
+
+.labels-block
+	box-sizing border-box
+	width 100%
+	position absolute
+	bottom 0px
+	padding-right 30px
+	// background-color #003da6
+	.labels-group
+		display none
+		&.active
+			display block
+	.label-item
+		font 12pt/14pt 'HW'
+		display none
+		&.active
+			display block
+		.label
+			margin-bottom 5px
+
+.panel-block
+	width 24%
+	height 100%
+	// background-color #a5a5a5
+	float left
+	padding-right 30px
+	box-sizing border-box
+	position relative
 
 
 .swiper-container-v
@@ -152,7 +170,6 @@ html, body, .content-block, .swiper-container
 		padding-left 30px
 		box-sizing border-box
 		overflow hidden
-		padding-bottom 180px
 		box-sizing border-box
 		height 100%
 		width 100%
@@ -173,25 +190,7 @@ html, body, .content-block, .swiper-container
 			p
 				text-indent 80px
 				font 16pt/18pt 'HW'
-	.labels-block
-		padding-top 45px
-		padding-left 30px
-		box-sizing border-box
-		width 100%
-		position absolute
-		bottom 0px
-		background-color black
-		// background-color #003da6
-		.label-item
-			font 12pt/14pt 'HW'
-			display none
-			.label
-				margin-bottom 5px
-				&.title:before
-					margin-right 5px
-					content '←'
-			&.active
-				display block
+
 
 
 .slide-image

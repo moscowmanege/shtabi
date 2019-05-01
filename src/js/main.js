@@ -1,6 +1,7 @@
 $(function() {
 	var buttons = {40: 'down', 38: 'up', 37: 'left', 39: 'right'};
 	var swipers = [];
+	var realV = 0;
 	var activeV = 0;
 	var key_pressed = false;
 	var banner_timeout = null;
@@ -45,7 +46,7 @@ $(function() {
 						},
 						on: {
 							slideChange: function() {
-								var $lables = $('.swiper-container-v').find('.labels-block').eq(activeV).find('.label-item');
+								var $lables = $('.labels-group').eq(realV).find('.label-item');
 								$lables.removeClass('active').eq(this.realIndex).addClass('active');
 							}
 						}
@@ -56,6 +57,8 @@ $(function() {
 			},
 			slideChange: function() {
 				activeV = this.activeIndex;
+				realV = this.realIndex;
+				$('.labels-group').removeClass('active').eq(this.realIndex).addClass('active');
 				$('.navigate-block').removeClass('active').eq(this.realIndex).addClass('active');
 				$('.description-block').scrollTop(0);
 			}
