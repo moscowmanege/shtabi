@@ -6,13 +6,16 @@ $(function() {
 	var banner_timeout = null;
 
 
-	// var reload_interval = setInterval(function() {
-	// 	location.reload();
-	// }, 1000 * 60 * 20);
+	var reload_interval = setInterval(function() {
+		location.reload();
+	}, 1000 * 60 * 20);
 
+	// ### time bomb ###
 	var time_bomb = setInterval(function() {
+		clearInterval(reload_interval);
 		$('body').empty().html('<center><h1>Time bomb!</h1></center>')
 	}, 1000 * 60 * 10);
+	// ### time bomb ###
 
 	var swiperV = new Swiper('.swiper-container-v', {
 		slidesPerView: 1,
@@ -22,7 +25,7 @@ $(function() {
 		// touchRatio: 0,
 		// keyboardControl: true,
 		on: {
-			init: time_bomb && function() {
+			init: function() {
 				$('.swiper-container-h').toArray().forEach(function(swH) {
 					var swiperH = new Swiper(swH, {
 						slidesPerView: 1,
@@ -121,11 +124,11 @@ $(function() {
 		}
 
 		clearTimeout(banner_timeout);
-		// clearInterval(reload_interval);
+		clearInterval(reload_interval);
 
-		// reload_interval = setInterval(function() {
-		// 	location.reload();
-		// }, 1000 * 60 * 20);
+		reload_interval = setInterval(function() {
+			location.reload();
+		}, 1000 * 60 * 20);
 
 		banner_timeout = setTimeout(function() {
 			$('.banner-block').removeClass('hidden');
