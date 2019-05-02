@@ -41,7 +41,7 @@ $(function() {
 						preloadImages: false,
 						lazy: {
 							loadPrevNext: true,
-							loadPrevNextAmount: 2
+							loadPrevNextAmount: 1
 						},
 						on: {
 							slideChange: function() {
@@ -67,7 +67,7 @@ $(function() {
 		animate: true,
 		patternWidth: 100,
 		patternHeight: 100,
-		grainOpacity: 0.010,
+		grainOpacity: 0.025,
 		grainDensity: 1,
 		grainWidth: 3,
 		grainHeight: 3,
