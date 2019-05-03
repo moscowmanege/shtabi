@@ -11,10 +11,10 @@ $(function() {
 	}, 1000 * 60 * 20);
 
 	// ### time bomb ###
-	var time_bomb = setInterval(function() {
-		clearInterval(reload_interval);
-		$('body').empty().html('<center><h1>Time bomb!</h1></center>')
-	}, 1000 * 60 * 10);
+	// var time_bomb = setInterval(function() {
+	// 	clearInterval(reload_interval);
+	// 	$('body').empty().html('<center><h1>Time bomb!</h1></center>')
+	// }, 1000 * 60 * 10);
 	// ### time bomb ###
 
 	var swiperV = new Swiper('.swiper-container-v', {
@@ -137,7 +137,7 @@ $(function() {
 			$('.banner-block').removeClass('hidden');
 			// $('.content-block').removeClass('open');
 			banner_timeout = null;
-		}, 1000 * 60);
+		}, 1000 * 60 * 3);
 	}).trigger('keyup');
 
 
